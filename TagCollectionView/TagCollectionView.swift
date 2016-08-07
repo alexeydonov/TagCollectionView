@@ -108,8 +108,6 @@ public class TagCollectionView: UIView {
     private func rebuildLabels() {
         tagViewCount = tags.count
         
-        print("New label count = \(tagViewCount)")
-        
         for (index, tag) in tags.enumerate() {
             let tagLabel = tagViews[index]
             tagLabel.text = tag.name
@@ -173,7 +171,6 @@ public class TagCollectionView: UIView {
     public override func intrinsicContentSize() -> CGSize {
         var size = bounds.size
         size.height = calculatedHeight
-        print("Intrinsic content size = \(size)")
         return size
     }
 
