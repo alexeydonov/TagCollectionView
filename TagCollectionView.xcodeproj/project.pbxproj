@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A5183C21D57B0930029FDBF /* TagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5183C11D57B0930029FDBF /* TagLabel.swift */; };
 		8A7546231D570B7F0051DBE8 /* TagCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A7546221D570B7F0051DBE8 /* TagCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A75462B1D570BC80051DBE8 /* TagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75462A1D570BC80051DBE8 /* TagCollectionView.swift */; };
+		8A75462D1D570BD70051DBE8 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A75462C1D570BD70051DBE8 /* Tag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A5183C11D57B0930029FDBF /* TagLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
 		8A75461F1D570B7E0051DBE8 /* TagCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TagCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7546221D570B7F0051DBE8 /* TagCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagCollectionView.h; sourceTree = "<group>"; };
 		8A7546241D570B7F0051DBE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A75462A1D570BC80051DBE8 /* TagCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionView.swift; sourceTree = "<group>"; };
+		8A75462C1D570BD70051DBE8 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +52,21 @@
 		8A7546211D570B7F0051DBE8 /* TagCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				8A75462A1D570BC80051DBE8 /* TagCollectionView.swift */,
+				8A5183C11D57B0930029FDBF /* TagLabel.swift */,
+				8A75462C1D570BD70051DBE8 /* Tag.swift */,
+				8A75462E1D5718DA0051DBE8 /* Support */,
+			);
+			path = TagCollectionView;
+			sourceTree = "<group>";
+		};
+		8A75462E1D5718DA0051DBE8 /* Support */ = {
+			isa = PBXGroup;
+			children = (
 				8A7546221D570B7F0051DBE8 /* TagCollectionView.h */,
 				8A7546241D570B7F0051DBE8 /* Info.plist */,
 			);
-			path = TagCollectionView;
+			name = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +148,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5183C21D57B0930029FDBF /* TagLabel.swift in Sources */,
+				8A75462D1D570BD70051DBE8 /* Tag.swift in Sources */,
+				8A75462B1D570BC80051DBE8 /* TagCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +251,7 @@
 		8A7546281D570B7F0051DBE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -241,12 +262,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexeydonov.TagCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		8A7546291D570B7F0051DBE8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -279,6 +302,7 @@
 				8A7546291D570B7F0051DBE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
