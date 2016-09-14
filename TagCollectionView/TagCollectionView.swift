@@ -9,60 +9,60 @@
 import UIKit
 
 @IBDesignable
-public class TagCollectionView: UIView {
+open class TagCollectionView: UIView {
     
     // MARK: API
 
-    public dynamic var tags = [Tag]() {
+    open dynamic var tags = [Tag]() {
         didSet {
             rebuildLabels()
         }
     }
     
     @IBInspectable
-    public dynamic var tagFont: UIFont = UIFont.systemFontOfSize(UIFont.labelFontSize()) {
+    open dynamic var tagFont: UIFont = UIFont.systemFont(ofSize: UIFont.labelFontSize) {
         didSet {
             layoutLabels()
         }
     }
     
     @IBInspectable
-    public dynamic var tagTextColor: UIColor? {
+    open dynamic var tagTextColor: UIColor? {
         didSet {
             updateLabels()
         }
     }
     
     @IBInspectable
-    public dynamic var tagBackgroundColor: UIColor? {
+    open dynamic var tagBackgroundColor: UIColor? {
         didSet {
             updateLabels()
         }
     }
     
     @IBInspectable
-    public dynamic var tagCornerRadius: CGFloat = 0 {
+    open dynamic var tagCornerRadius: CGFloat = 0 {
         didSet {
             updateLabels()
         }
     }
     
     @IBInspectable
-    public dynamic var autoCornerRadius: Bool = true {
+    open dynamic var autoCornerRadius: Bool = true {
         didSet {
             updateLabels()
         }
     }
     
     @IBInspectable
-    public dynamic var tagSpacing: CGFloat = 8 {
+    open dynamic var tagSpacing: CGFloat = 8 {
         didSet {
             layoutLabels()
         }
     }
     
     @IBInspectable
-    public dynamic var rowSpacing: CGFloat = 8 {
+    open dynamic var rowSpacing: CGFloat = 8 {
         didSet {
             layoutLabels()
         }
@@ -70,9 +70,9 @@ public class TagCollectionView: UIView {
     
     // MARK: Implementation
     
-    private var tagViews = [TagLabel]()
+    fileprivate var tagViews = [TagLabel]()
     
-    private var tagViewCount: Int {
+    fileprivate var tagViewCount: Int {
         get {
             return tagViews.count
         }
@@ -99,20 +99,20 @@ public class TagCollectionView: UIView {
         }
     }
     
-    private var calculatedHeight: CGFloat = 0 {
+    fileprivate var calculatedHeight: CGFloat = 0 {
         didSet {
             invalidateIntrinsicContentSize()
         }
     }
     
-    private func rebuildLabels() {
+    fileprivate func rebuildLabels() {
         tagViewCount = tags.count
         
-        for (index, tag) in tags.enumerate() {
+        for (index, tag) in tags.enumerated() {
             let tagLabel = tagViews[index]
             tagLabel.text = tag.name
             tagLabel.font = tagFont
-            tagLabel.textColor = tag.textColor ?? tagTextColor ?? UIColor.whiteColor()
+            tagLabel.textColor = tag.textColor ?? tagTextColor ?? UIColor.white
             tagLabel.backgroundColor = tag.backgroundColor ?? tagBackgroundColor ?? tintColor
             tagLabel.cornerRadius = tagCornerRadius
         }
@@ -120,7 +120,7 @@ public class TagCollectionView: UIView {
         setNeedsLayout()
     }
     
-    private func layoutLabels() {
+    fileprivate func layoutLabels() {
         var x: CGFloat = 0
         var y: CGFloat = 0
         var lastRowHeight: CGFloat = 0
@@ -128,19 +128,19 @@ public class TagCollectionView: UIView {
         for tagLabel in tagViews {
             var cornerRadius: CGFloat = tagCornerRadius
             if autoCornerRadius {
-                cornerRadius = tagLabel.intrinsicContentSize().height / 2
+                cornerRadius = tagLabel.intrinsicContentSize.height / 2
             }
             tagLabel.cornerRadius = cornerRadius
             tagLabel.edgeInsets = UIEdgeInsets(top: 0, left: cornerRadius, bottom: 0, right: cornerRadius)
 
-            let tagViewSize = tagLabel.intrinsicContentSize()
+            let tagViewSize = tagLabel.intrinsicContentSize
             
             if x + tagViewSize.width + tagSpacing > bounds.width {
                 x = 0
                 y += tagViewSize.height + rowSpacing
             }
             
-            tagLabel.frame = CGRect(origin: CGPointMake(x, y), size: tagViewSize)
+            tagLabel.frame = CGRect(origin: CGPoint(x: x, y: y), size: tagViewSize)
             
             x += tagViewSize.width + tagSpacing
             lastRowHeight = tagViewSize.height
@@ -149,26 +149,26 @@ public class TagCollectionView: UIView {
         calculatedHeight = y + lastRowHeight
     }
     
-    private func updateLabels() {
-        for (index, tagLabel) in tagViews.enumerate() {
+    fileprivate func updateLabels() {
+        for (index, tagLabel) in tagViews.enumerated() {
             let tag = tags[index]
-            tagLabel.textColor = tag.textColor ?? tagTextColor ?? UIColor.whiteColor()
+            tagLabel.textColor = tag.textColor ?? tagTextColor ?? UIColor.white
             tagLabel.backgroundColor = tag.backgroundColor ?? tagBackgroundColor ?? tintColor
         }
     }
     
     // MARK: Layout
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         layoutLabels()
     }
     
-    public override func prepareForInterfaceBuilder() {
+    open override func prepareForInterfaceBuilder() {
         tags = [Tag(name: "TagCollectionView"), Tag(name: "Taggy"), Tag(name: "McTagface")]
     }
     
-    public override func intrinsicContentSize() -> CGSize {
+    open override var intrinsicContentSize : CGSize {
         var size = bounds.size
         size.height = calculatedHeight
         return size

@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class Tag: NSObject {
+open class Tag: NSObject {
     
-    public var name: String
+    open var name: String
     
-    public var textColor: UIColor?
-    public var backgroundColor: UIColor?
+    open var textColor: UIColor?
+    open var backgroundColor: UIColor?
     
     public init(name: String, textColor: UIColor? = nil, backgroundColor: UIColor? = nil) {
         self.name = name

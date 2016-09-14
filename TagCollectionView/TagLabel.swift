@@ -32,12 +32,12 @@ class TagLabel: UILabel {
         super.init(coder: aDecoder)
     }
     
-    override func drawTextInRect(rect: CGRect) {
-        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, edgeInsets))
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, edgeInsets))
     }
     
-    override func intrinsicContentSize() -> CGSize {
-        var contentSize = super.intrinsicContentSize()
+    override var intrinsicContentSize: CGSize {
+        var contentSize = super.intrinsicContentSize
         contentSize.width += edgeInsets.left + edgeInsets.right
         contentSize.height += edgeInsets.top + edgeInsets.bottom
         return contentSize
